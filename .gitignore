@@ -3,4 +3,4 @@ out
 main.jar
 
 # Instances
-instances
+instances/*.col
