@@ -20,6 +20,20 @@
 Todas as instâncias descritas na subseção anterior podem ser baixadas em [DIMACS Graphs: Benchmark Instances and Best Upper Bounds](https://cedric.cnam.fr/~porumbed/graphs/)
 
 ### Implementação
+#### Visão geral
+Em resumo, o programa:
+1. Lê o grafo  
+2. Monta a relação “arestas adjacentes”
+3. Itera escolhendo arestas de alto grau, monta um conjunto independente máximo, colore-o
+4. Repete até acabar
+5. Grava resultado (+ tempo) em [/lista1/results](https://github.com/juanocv/listas_tdc/tree/main/lista1/results).
+#### Complexidade
+- Memória:
+adj = E bitsets de E bits ⇒ O(E²) bits ≈ E²/8 bytes.
+Em grafos de até alguns milhares de arestas cabe bem na RAM.
+- Tempo:
+Cada iteração percorre rem para graus e possivelmente todo rem em maximalNull, então O(E²) no pior caso.
+#### Caminho
 A implementação encontra-se no seguinte caminho deste repositório: [/lista1/main.kt](https://github.com/juanocv/listas_tdc/blob/main/lista1/main.kt)
 
 ### Execução
@@ -30,5 +44,26 @@ A implementação encontra-se no seguinte caminho deste repositório: [/lista1/m
 5. Compile via `kotlinc lista1/main.kt -include-runtime -d main.jar`
 6. Execute via `java -jar lista1/main.jar instances/{nome_da_instancia}.col` substituindo `{nome_da_instancia}` pelo nome da instância `.col` desejada
 
-### Resultados
+### Resultados e Conclusões
+#### Observações
+1. Tempo cresce rapidamente com |E|²  
+   O(E²) era a previsão teórica: para ~112 k arestas (dsjc500.9) o tempo já subiu para 2 ½ minutos, mesmo em JVM local otimizada.
+
+2. Uso de memória explode na mesma proporção  
+
+    | Instância                | Bits estimados     | Aproximação em RAM |
+    | ------------------------ | ------------------ | ------------------ |
+    | dsjc500.9 (112 k)        | ≈ 1,26 × 10¹⁰ bits | ~1,6 GB            |
+    | **dsjc1000.5 (≈ 250 k)** | ≈ 6,25 × 10¹⁰ bits | **~7,8 GB**        |
+    | **dsjc1000.9 (≈ 450 k)** | ≈ 2,0 × 10¹¹ bits  | **> 25 GB**        |
+
+    **O heap padrão (-Xmx2G | -Xmx4G) não comporta 8–25 GB, por isso para instâncias de maior tamanho o erro _java.lang.OutOfMemoryError: Java heap space_.**
+
+3. Densidade influencia mais que |V|  
+    d = 0,1 gera bem menos arestas que d = 0,5 ou 0,9, por isso dsjc500.1 (n = 500) roda em menos de 1 s enquanto dsjc250.5 (n = 250, d = 0,5) já exige 1,3 s.
+   
+5. Número de cores acompanha a densidade  
+    Para os grafos densos (d = 0,9) o algoritmo precisou de ~0,54 |V| cores (608 para n = 500). Para densidade 0,1 foram usadas só 77 cores, corroborando que o heurístico produz soluções     mais “apertadas” quando há menos conflitos.
+   
+#### Caminho
 Após execução, o resultado de cada instância executada estará em [/lista1/results](https://github.com/juanocv/listas_tdc/tree/main/lista1/results) em um arquivo `.txt`
