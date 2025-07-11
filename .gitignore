@@ -1,6 +1,8 @@
 # Compiler
 out
-main.jar
+EdgeColoring1.jar
+EdgeColoring2.jar
+EdgeColoringLargeOpt.jar
 
 # Instances
 instances/*.col
