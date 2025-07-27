@@ -129,7 +129,7 @@ Após execução, o resultado, em arquivo `.txt`, de cada instância executada, 
 – opiniões sobre os resultados obtidos.
 
 ### Instâncias
-Todas as instâncias descritas na subseção anterior foram disponibilizadas no [Moodle da UFABC do Curso](https://moodle.ufabc.edu.br/course/view.php?id=4067)
+Todas as instâncias descritas na subseção anterior foram disponibilizadas na [Página Moodle do Curso](https://moodle.ufabc.edu.br/course/view.php?id=4067)
 
 ### Execução
 1. Realize o setup de um ambiente [Python](https://www.python.org/downloads/) em seu editor de código de preferência
