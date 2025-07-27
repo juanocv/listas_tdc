@@ -114,4 +114,71 @@ processamento em relação aos outros algoritmos para instâncias grandes.
 Após execução, o resultado, em arquivo `.txt`, de cada instância executada, estará em:
 - EdgeColoring1: [/lista1/results/edgecoloring1](https://github.com/juanocv/listas_tdc/tree/main/lista1/results/edgecoloring1)
 - EdgeColoring2: [/lista1/results/edgecoloring2](https://github.com/juanocv/listas_tdc/tree/main/lista1/results/edgecoloring2)
-- EdgeColoringLargeOpt: [/lista1/results/edgecoloring2](https://github.com/juanocv/listas_tdc/tree/main/lista1/results/edgecoloringlargeopt) 
+- EdgeColoringLargeOpt: [/lista1/results/edgecoloring2](https://github.com/juanocv/listas_tdc/tree/main/lista1/results/edgecoloringlargeopt)
+
+## Lista 2 - Problema da Mochila 0-1
+### Descrição do problema:
+> O problema da mochila 0-1 (ou 0-1 Knapsack Problem) é um problema clássico de otimização combinatória muito estudado nas áreas de ciência da computação, pesquisa operacional e matemática. Ele consiste em determinar o subconjunto de itens mais valioso que pode ser colocado dentro de uma mochila, sem ultrapassar sua capacidade de peso.
+
+### Tarefas:
+>Nesta lista de exercícios,<br>
+• Executar a implementação disponibilizada sobre o conjunto de instâncias postadas no Moodle.<br>
+• Escrever duas páginas de análise de resultados com, minimamente, as seguintes seções:<br>
+– uma descrição do problema investigado;<br>
+– comparações dos tempos de execuções das duas implementações consideradas;<br>
+– opiniões sobre os resultados obtidos.
+
+### Instâncias
+Todas as instâncias descritas na subseção anterior foram disponibilizadas no [Moodle da UFABC do Curso](https://moodle.ufabc.edu.br/course/view.php?id=4067)
+
+### Execução
+1. Realize o setup de um ambiente [Python](https://www.python.org/downloads/) em seu editor de código de preferência
+2. Acesse a pasta onde deseja clonar o repositório atual `(cd ...)`
+3. Clone-o via terminal utilizando:
+   ```cmd
+   git clone https://github.com/juanocv/listas_tdc
+   ```
+   Ou descompacte o `.zip`
+4. Acesse o diretório correspondente a esta lista via:
+   ```cmd
+   cd lista2
+   ```
+5. Faça o download das instâncias desejadas e mova-as para a pasta do repositório [listas_tdc/lista2/instances](https://github.com/juanocv/listas_tdc/tree/main/lista2/instances)
+6. Compile e rode via: 
+   ```cmd
+   python main.py
+   ``` 
+
+### Resultados e Conclusões
+#### Ambiente de execução (TBC)
+- **Processador:** AMD Ryzen 9 5950X 16-Core Processor 
+- **Memória RAM:** 64 GB
+- **Sistema operacional:** Linux Mint Mate 22 (64 bits)
+- **Placa-mãe:** ASUSTeK COMPUTER INC. ROG STRIX B550-F GAMING WIFI II Rev X.0x
+
+#### Tabela dos resultados
+| n     | PD com Matriz (s) | PD com Vetor (s) | Mochila Fracionária (s) |
+|-------|--------------------|------------------|--------------------------|
+| 4     | 0.00005            | 0.00002          | 0.000011683              |
+| 10    | 0.00050            | 0.00027          | 0.000014782              |
+| 20    | 0.01113            | 0.00690          | 0.000027418              |
+| 50    | 0.04197            | 0.02419          | 0.000020266              |
+| 100   | 0.07788            | 0.05392          | 0.000030518              |
+| 200   | 0.13245            | 0.08426          | 0.000042439              |
+| 300   | 0.19812            | 0.11915          | 0.000059605              |
+| 400   | 0.29188            | 0.17500          | 0.000078678              |
+| 500   | 0.37685            | 0.21491          | 0.000095129              |
+| 1000  | 0.69896            | 0.45739          | 0.000263210              |
+| 1500  | 5.22481            | 3.54706          | 0.001962200              |
+| 3000  | 123.64184          | 78.00929         | 0.000474450              |
+| 5000  | 20.28272           | 11.54874         | 0.006837100              |
+| 10000 | 40.43025           | 23.24896         | 0.014423000              |
+
+#### Parecer geral
+Em resumo, a análise mostra que a **implementação com vetor** é a mais eficiente entre as versões exatas, sendo ideal para aplicações práticas do problema 0-1. A versão **fracionária**, apesar de ser a mais veloz, não deve ser usada quando a restrição 0-1 é obrigatória, já que seus resultados não são válidos nesses casos. Essa distinção entre desempenho e aplicabilidade é essencial para a escolha adequada do algoritmo.
+   
+#### Caminho dos resultados
+Após execução, o resultado, em arquivo `.txt`, para cada instância executada, estará em [/lista2/Results.txt](https://github.com/juanocv/listas_tdc/tree/main/lista2/Results.txt)
+> Nota: Para cada nova execução, adiciona-se mais linhas ao arquivo referente à execução vigente.
+
+
